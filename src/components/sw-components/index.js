@@ -1,3 +1,3 @@
-import {PeopleList, PlanetList, StarshipList} from './items-list'
+import {PeopleList} from './items-list'
 
-export {PeopleList, PlanetList, StarshipList}
+export {PeopleList}

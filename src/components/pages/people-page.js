@@ -14,12 +14,8 @@ class PeoplePage extends React.Component {
   }
 
   render() {
-    const itemList = (
-      <PeopleList
-        onItemSelected={this.onItemSelected}
-        renderFunction={(item) => <span>{item.name} ({item.birthYear})</span>}
-      />
-    )
+    const itemList = <PeopleList onItemSelected={this.onItemSelected}/>
+    
 
     const personDetails = (
       <ItemDetails selectedItemId={this.state.selectedItemId}>

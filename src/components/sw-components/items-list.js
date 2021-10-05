@@ -1,13 +1,42 @@
 import React from 'react';
 import ItemList from '../item-list';
 import withData from '../hoc'
+import {SwapiConsumer}  from '../swapi-service-context';
 import SwapiService from  '../../services/swapi-service';
 
 const swapi = new SwapiService()
-const {getAllPeople, getAllPlanets, getAllStarships} = swapi;
+const {getAllPeople, getAllPlanets,getAllStarships} = swapi;
 
-const PeopleList = withData (ItemList, getAllPeople);
-const PlanetList = withData (ItemList, getAllPlanets);
-const StarshipList = withData (ItemList, getAllStarships);
+const withRenderFunction = (View, renderFunction) => {
+  return (props) => {
+    return <View {...props} renderFunction={renderFunction}/>
+  }
+}
 
-export {PeopleList, PlanetList, StarshipList}
+const consumer_test = (View) => {
+  return (props) => {
+    return (
+      <SwapiConsumer>
+      {
+        (swapiServiceObject) => {
+          return <View {...props} swapi={swapiServiceObject} />
+        }
+      }
+      </SwapiConsumer>
+    )
+  }
+}
+
+const PeopleList = (
+  consumer_test(
+    withData(
+     withRenderFunction(
+      ItemList,
+       (item) => <span>{item.name} ({item.birthYear})</span>
+     ),
+     getAllPeople
+    )
+   )
+  );
+
+export {PeopleList}
