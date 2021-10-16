@@ -31,11 +31,11 @@ class ItemDetails extends Component {
 
   render() {
     const {id, name, gender, birthYear, eyeColor} = this.state.item
-    const image_url = this.props.getImage({id: id})
+
     return (
       <div className="person-details card">
         <img className="person-image"
-          src={image_url} />
+          src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
 
         <div className="card-body">
           <h4>{name}</h4>

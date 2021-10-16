@@ -17,7 +17,6 @@ const withData = (Wrapper) => {
         this.setState({data: data})
       })
     }
-    
 
     render() {
       return <Wrapper data={this.state.data} {...this.props} />

@@ -5,8 +5,7 @@ import {withSwapiService} from '../hoc'
 
 const mapMathodsToProps = (swapi) => {
   return {
-    getData: swapi.getPerson,
-    getImage: swapi.getPersonImage,
+    getData: swapi.getPerson
   }
 }
 

@@ -12,21 +12,9 @@ const withRenderFunction = (View, renderFunction) => {
 }
 
 
-const mapMathodsToPeole = (swapi) => {
+const mapMathodsToProps = (swapi) => {
   return {
     getData: swapi.getAllPeople
-  }
-}
-
-const mapMathodsToPlanets = (swapi) => {
-  return {
-    getData: swapi.getAllPlanets
-  }
-}
-
-const mapMathodsToStarships = (swapi) => {
-  return {
-    getData: swapi.getAllStarships
   }
 }
 
@@ -39,35 +27,9 @@ const PeopleList = (
         (item) => <span>{item.name} ({item.birthYear})</span>
       )
     ),
-    mapMathodsToPeole
-  )
-);
-
-const PlanetList = (
-  withSwapiService(
-    withData(
-      withRenderFunction(
-        ItemList,
-        (item) => <span>{item.name} ({item.population})</span>
-      )
-    ),
-    mapMathodsToPlanets
-  )
-);
-
-const StarshipList = (
-  withSwapiService(
-    withData(
-      withRenderFunction(
-        ItemList,
-        (item) => <span>{item.name} ({item.model})</span>
-      )
-    ),
-    mapMathodsToStarships
+    mapMathodsToProps
   )
 );
 
 
-
-
-export {PeopleList, PlanetList, StarshipList}
+export {PeopleList}
