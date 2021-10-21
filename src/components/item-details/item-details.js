@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import Spinner from '../spinner';
+
 import './item-details.css';
+
 
 
 const Record = ({label, fieldName, item}) => {
@@ -14,12 +17,13 @@ const Record = ({label, fieldName, item}) => {
 
 class ItemDetails extends Component {
   state = {
-    item: {}
+    item: {},
+    load: true,
   }
 
   componentDidMount() {
     const id = this.props.selectedItemId
-    this.props.getData(id).then(data => this.setState({item: data}))
+    this.props.getData(id).then(data => this.setState({item: data, load: false}))
   }
 
   componentDidUpdate(prevProps) {
@@ -33,10 +37,14 @@ class ItemDetails extends Component {
     const {id, name} = this.state.item
     const image_url = this.props.getImage({id: id})
 
+    if (this.state.load) {
+      return <Spinner/>
+    }
+
     return (
       <div className="person-details card">
         <img className="person-image"
-          src={image_url} />
+          src={image_url} alt='' />
 
         <div className="card-body">
           <h4>{name}</h4>
@@ -56,4 +64,4 @@ class ItemDetails extends Component {
   }
 }
 
-export {Record, ItemDetails}
+export {Record, ItemDetails, Spinner}

@@ -55,7 +55,7 @@ export default class RandomPlanet extends Component {
     return (
       <div className="random-planet jumbotron rounded">
         <img className="planet-image"
-             src={url} />
+             src={url} alt='' />
         <div>
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
