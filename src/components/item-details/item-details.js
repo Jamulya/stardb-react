@@ -23,19 +23,20 @@ class ItemDetails extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.selectedItemId != this.props.selectedItemId) {
+    if (prevProps.selectedItemId !== this.props.selectedItemId) {
       const id = this.props.selectedItemId
       this.props.getData(id).then(data => this.setState({item: data}))
     }
   }
 
   render() {
-    const {id, name, gender, birthYear, eyeColor} = this.state.item
+    const {id, name} = this.state.item
+    const image_url = this.props.getImage({id: id})
 
     return (
       <div className="person-details card">
         <img className="person-image"
-          src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
+          src={image_url} />
 
         <div className="card-body">
           <h4>{name}</h4>

@@ -18,7 +18,6 @@ class ItemList extends Component {
   }
 
   render() {
-    console.log('---- props fro item list -----', this.props)
     const content = this.prepareItems(this.props.data)
 
     return (

@@ -1,8 +1,8 @@
 import React from 'react';
-import SwapiService from '../../services/swapi-service';
+// import SwapiService from '../../services/swapi-service';
 
 
-const swapi = new SwapiService()
+// const swapi = new SwapiService()
 
 
 const withData = (Wrapper) => {
